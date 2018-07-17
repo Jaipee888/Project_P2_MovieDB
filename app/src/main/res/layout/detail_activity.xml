@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar_detail"
+        android:id="@+id/tool_detail"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/detailphoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="56dp"
+                    android:scaleType="fitXY"
+                    android:contentDescription="@string/detail_imageview" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="300dp"
+                    android:id="@+id/headlineTitleText"
+                    android:text="@string/TitleText_Name"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp" />
+                    <!--android:layout_below="@+id/detailphoto"-->
+
+
+                <TextView
+                    android:id="@+id/detail_TitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_below="@+id/headlineTitleText"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/headlineDetailText"
+                    android:layout_below="@+id/detail_TitleTextView"
+                    android:text="@string/overviewText_name"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detail_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_below="@+id/headlineDetailText"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="20dp"
+                    android:id="@+id/headlineReleaseText"
+                    android:layout_below="@+id/detail_textView"
+                    android:text="@string/releaseText_name"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_below="@+id/headlineReleaseText"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp"
+                    android:id="@+id/releaseDate"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="20dp"
+                    android:id="@+id/headlineVote"
+                    android:layout_below="@+id/releaseDate"
+                    android:text="@string/voteText_name"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_below="@id/headlineVote"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp"
+                    android:id="@+id/votingAverage"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="20dp"
+                    android:id="@+id/headlineTrailer"
+                    android:layout_below="@+id/votingAverage"
+                    android:text="@string/trailer_headline"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_one_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/headlineTrailer"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_one_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonOne"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/headlineTrailer"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:id="@+id/headline_for_checkBox"
+                    android:text="Add to Favorites:"
+                    android:layout_below="@id/trailer_one_text"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headline_for_checkBox"
+                    android:id="@+id/favoriteCheckBox"
+                    android:text="@string/favorite"
+                    android:onClick="onFavoriteClicked"/>
+
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MovieDB_part_two</string>
+    <string name="image_name">Image Name</string>
+    <string name="detail_imageview">Detail_Image_View</string>
+    <string name="overviewText_name">Overview:</string>
+    <string name="releaseText_name">Release Date:</string>
+    <string name="voteText_name">Vote:</string>
+    <string name="detail_Panel_name">Movie Detail</string>
+    <string name="actionbar_spinner">Spinner</string>
+    <string name="main_app_name">JFlix</string>
+    <string name="TitleText_Name">Title:</string>
+    <string name="trailer_headline">Trailer:</string>
+    <string name="trailer_one_Textview">Offical Trailer HD</string>
+    <string name="trailer_two_Textview">Trailer Two </string>
+    <string name="trailer_three_Textview">Trailer Three </string>
+    <string name="image_botton1">Image Button 1</string>
+    <string name="image_botton2">Image Button 2</string>
+    <string name="image_botton3">Image Button 3</string>
+    <string name="favorite">Favorite</string>
+    <string-array name="default_sort">
+        <item>Sort by</item>
+        <item>Popularity</item>
+        <item>Top Rated</item>
+    </string-array>
+
+</resources>
