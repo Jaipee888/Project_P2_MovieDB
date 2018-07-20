@@ -11,6 +11,7 @@ public class MovieDBDatabaseHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 2;  // The Version of the Database.
 
     MovieDBDatabaseHelper(Context context)
+
     {
 
         super(context, DB_NAME, null, DB_VERSION );
