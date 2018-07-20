@@ -80,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 case 2:
                     new DownloadTask().execute(voteLink);
                     break;
+                case 3:
+                    new DownloadTask().execute();
 
                 default:
                     new DownloadTask().execute(originalLink);

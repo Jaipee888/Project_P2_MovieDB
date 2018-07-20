@@ -1,9 +1,14 @@
 package com.example.jaypr_000.project_moviedb_p2;
 
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -95,7 +100,40 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
+        // Create a Cursor.
+
+        SQLiteOpenHelper movieDBDatabaseHelper = new MovieDBDatabaseHelper(this);
+        try{
+
+            SQLiteDatabase db = movieDBDatabaseHelper.getReadableDatabase();
+            Cursor cursor = db.query("MOVIEDB", new String[]{ "MOVIEID","TITLE","FAVORITE"},
+                    "_id = ?",new String[]{Integer.toString(1)} , null, null, null);
+
+            System.out.println("The count is " + cursor.getCount());
+
+            // Move to first record in the cursor.
+            if(cursor.moveToFirst()){
+                boolean isFavorite = (cursor.getInt(2) == 1);
+                //Populate Favorite CheckBox.
+                CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+                favorite.setChecked(isFavorite);
+            }
+
+            cursor.close();
+            db.close();
         }
+        catch(SQLiteException e){
+            Toast toast = Toast.makeText(this,"Database Unavailable in onCreate" ,Toast.LENGTH_SHORT );
+            toast.show();
+
+        }
+
+
+
+
+
+
+    }
 
     public class DetailDownloadTask extends AsyncTask <String, Void, String>{
         @Override
@@ -206,6 +244,39 @@ public class DetailActivity extends AppCompatActivity {
         return keyStrArray[0];
 
     }
+
+    //update the database when checkbox is clicked.
+    public void onFavoriteClicked (View view){
+
+        String movieIdTwo = getIntent().getStringExtra("id");
+
+
+        // Get the Value of the Checkbox.
+        CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+        ContentValues movieCheckboxValue = new ContentValues();
+        // Adding the value of favorite checkbox to movieCheckboxValue ContentValues object.
+        movieCheckboxValue.put("FAVORITE",favorite.isChecked());
+
+        //Get a Reference to the database and update the FAVORITE column.
+        SQLiteOpenHelper movieDBDatabaseHelper = new MovieDBDatabaseHelper(this );
+
+        try{
+            SQLiteDatabase db = movieDBDatabaseHelper.getWritableDatabase();
+            db.update("MOVIEDB", movieCheckboxValue, "_id = ?", new String[] {movieIdTwo});
+            System.out.println(movieIdTwo);
+            Toast passtoast = Toast.makeText(this,"Database updated" ,Toast.LENGTH_SHORT );
+            passtoast.show();
+        }catch (SQLiteException e){
+
+            Toast toast = Toast.makeText(this,"Database Unavailable in OnFavoriteClicked Method" ,Toast.LENGTH_SHORT );
+            toast.show();
+
+        }
+
+
+    }
+
+
 
 
 }

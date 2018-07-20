@@ -21,6 +21,7 @@
         <item>Sort by</item>
         <item>Popularity</item>
         <item>Top Rated</item>
+        <item>Favorites</item>
     </string-array>
 
 </resources>
