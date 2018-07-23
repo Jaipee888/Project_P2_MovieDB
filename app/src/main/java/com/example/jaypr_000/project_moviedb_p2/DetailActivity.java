@@ -120,21 +120,7 @@ public class DetailActivity extends AppCompatActivity {
                 final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
                 favorite.setChecked(true);
 
-               /* boolean isFavorite = (cursor.getInt(2) == 1);
-                System.out.println("The cursor is here");
-                //Populate Favorite CheckBox.
 
-                //final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
-                favorite.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(favorite.isChecked()){
-                            favorite.setChecked(true);
-                        }else{
-                            favorite.setChecked(false);
-                        }
-                    }
-                });*/
 
             }
 
