@@ -82,13 +82,11 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList PopularList= new ArrayList<>();
                     PopularList.add(popularityLink);
                     new DownloadTask().execute(PopularList);
-                    //new DownloadTask().execute(popularityLink);
                     break;
                 case 2:
                     ArrayList VoteList= new ArrayList<>();
                     VoteList.add(voteLink);
                     new DownloadTask().execute(VoteList);
-                    //new DownloadTask().execute(voteLink);
                     break;
                 case 3:
 
@@ -96,12 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
                     for (int i =0; i < getAllMovieId().size(); i++){
                         String favstr = getAllMovieId().get(i);
-                        String favLink = "https://api.themoviedb.org/3/movie/"+favstr+"?api_key=7e0022e491b7bec0ff933f003cedb45c&language=en-US";
+                        String favLink = "https://api.themoviedb.org/3/movie/"+favstr+"?+api_key="+api_key+"&language=en-US";
                         FavList.add(favLink);
                     }
                     new DownloadTask().execute(FavList);
 
-                    //new DownloadTask().execute(FavoriteLink);
                     break;
 
 
@@ -233,9 +230,6 @@ public class MainActivity extends AppCompatActivity {
                     item.setReleaseDate(post.getString("release_date"));
                     item.setOverView(post.getString("overview"));
 
-
-                    //String trailerArray = "https://api.themoviedb.org/3/movie/" +post.getString("id")+
-                    //"/videos?language=en-US&api_key="+api_key;
                     MovieList.add(item);
                 }
 
