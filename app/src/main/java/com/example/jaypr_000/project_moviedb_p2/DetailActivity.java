@@ -39,14 +39,15 @@ import static android.support.constraint.Constraints.TAG;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private static final String TAG = "MovieDBData";
     private TextView overViewText;
-   private ImageView thumbnailImage;
-   private TextView vote;
-   private TextView release;
-   private TextView originalTitleTextView;
-   private ProgressBar progressBar;
+    private ImageView thumbnailImage;
+    private TextView vote;
+    private TextView release;
+    private TextView originalTitleTextView;
+    private ProgressBar progressBar;
 
-   String api_key = "ENTER_API_KEY";
+    String api_key = "ENTER_API_KEY";
 
 
     @Override
@@ -57,11 +58,11 @@ public class DetailActivity extends AppCompatActivity {
         //Action Bar sets the return to Home Button in Movie Detail Activity.
         Toolbar detailToolbar = (Toolbar) findViewById(R.id.toolbar_detail);
         setSupportActionBar(detailToolbar);
-         ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
 
-         if(actionBar != null) {
-             actionBar.setDisplayHomeAsUpEnabled(true);
-             }
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
 
         String overViewSummary = getIntent().getStringExtra("overview");
@@ -106,17 +107,35 @@ public class DetailActivity extends AppCompatActivity {
         try{
 
             SQLiteDatabase db = movieDBDatabaseHelper.getReadableDatabase();
-            Cursor cursor = db.query("MOVIEDB", new String[]{ "MOVIEID","TITLE","FAVORITE"},
-                    "_id = ?",new String[]{Integer.toString(1)} , null, null, null);
+            //Cursor cursor = db.query("MOVIEDB", new String[]{ "MOVIEID","TITLE","FAVORITE"},
+            //      "_id = ?",new String[]{Integer.toString(1)} , null, null, null);
 
-            System.out.println("The count is " + cursor.getCount());
+            Cursor cursor = db.query("MOVIEDB", new String[]{ "MOVIEID","TITLE","FAVORITE"}, "MOVIEID='"+movieId+"'", null, null, null, null);
+
+
+            System.out.println("The Cursor count is " + cursor.getCount());
 
             // Move to first record in the cursor.
             if(cursor.moveToFirst()){
-                boolean isFavorite = (cursor.getInt(2) == 1);
+                final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+                favorite.setChecked(true);
+
+               /* boolean isFavorite = (cursor.getInt(2) == 1);
+                System.out.println("The cursor is here");
                 //Populate Favorite CheckBox.
-                CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
-                favorite.setChecked(isFavorite);
+
+                //final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+                favorite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(favorite.isChecked()){
+                            favorite.setChecked(true);
+                        }else{
+                            favorite.setChecked(false);
+                        }
+                    }
+                });*/
+
             }
 
             cursor.close();
@@ -144,25 +163,25 @@ public class DetailActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String keyReturnValue) {
 
-                String trailerLinkOne = "https://www.youtube.com/watch?v=" + keyReturnValue;
-                Uri webpage = Uri.parse(trailerLinkOne);
-                Intent videoIntent = new Intent(Intent.ACTION_VIEW, webpage);
+            String trailerLinkOne = "https://www.youtube.com/watch?v=" + keyReturnValue;
+            Uri webpage = Uri.parse(trailerLinkOne);
+            Intent videoIntent = new Intent(Intent.ACTION_VIEW, webpage);
+            startActivity(videoIntent);
+            //Toast.makeText(getApplicationContext(),"Your video will start here" , Toast.LENGTH_LONG).show();
+
+            //Verify it resolves
+            PackageManager packageManager = getPackageManager();
+            List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntent, packageManager.MATCH_DEFAULT_ONLY);
+            boolean isIntentSafe = activities.size()>0;
+
+            if(isIntentSafe){
                 startActivity(videoIntent);
-                //Toast.makeText(getApplicationContext(),"Your video will start here" , Toast.LENGTH_LONG).show();
-
-                //Verify it resolves
-                PackageManager packageManager = getPackageManager();
-                List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntent, packageManager.MATCH_DEFAULT_ONLY);
-                boolean isIntentSafe = activities.size()>0;
-
-                if(isIntentSafe){
-                    startActivity(videoIntent);
-                }
+            }
 
         }
 
 
-       @Override
+        @Override
         protected String doInBackground(String... params) {
 
 
@@ -193,8 +212,7 @@ public class DetailActivity extends AppCompatActivity {
                     System.out.println(parseVideoResult(response.toString()));
                 }
                 else{
-
-                    Toast.makeText(getApplicationContext(),"Failed to Fetch Data" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"DetailActivity: Failed to Fetch Data" , Toast.LENGTH_LONG).show();
                 }
 
             }catch (Exception e){
@@ -232,7 +250,7 @@ public class DetailActivity extends AppCompatActivity {
             }
             //System.out.println(idStrArray[0]);
             //System.out.println(idStrArray[1]);
-           // System.out.println(idStrArray[2]);
+            // System.out.println(idStrArray[2]);
 
 
         }catch (JSONException e){
@@ -249,23 +267,48 @@ public class DetailActivity extends AppCompatActivity {
     public void onFavoriteClicked (View view){
 
         String movieIdTwo = getIntent().getStringExtra("id");
-
+        long rows;
 
         // Get the Value of the Checkbox.
         CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+        //Ankur Code Start
+
+
+        //Ankur Code End
         ContentValues movieCheckboxValue = new ContentValues();
         // Adding the value of favorite checkbox to movieCheckboxValue ContentValues object.
+        movieCheckboxValue.put("MOVIEID",movieIdTwo );
+        movieCheckboxValue.put("TITLE","Title" );
         movieCheckboxValue.put("FAVORITE",favorite.isChecked());
 
         //Get a Reference to the database and update the FAVORITE column.
         SQLiteOpenHelper movieDBDatabaseHelper = new MovieDBDatabaseHelper(this );
 
+
         try{
             SQLiteDatabase db = movieDBDatabaseHelper.getWritableDatabase();
-            db.update("MOVIEDB", movieCheckboxValue, "_id = ?", new String[] {movieIdTwo});
+            if(favorite.isChecked()){
+                rows =  db.insert("MOVIEDB",null,movieCheckboxValue);
+
+            }else{
+
+                //long rows = db.delete("MOVIEDB",null,movieCheckboxValue);
+                rows =  db.delete("MOVIEDB", "MOVIEID" + "=" + movieIdTwo, null);
+
+            }
+
+            //int rows = db.update("MOVIEDB", movieCheckboxValue, "_id = ?", new String[] {movieIdTwo});
             System.out.println(movieIdTwo);
-            Toast passtoast = Toast.makeText(this,"Database updated" ,Toast.LENGTH_SHORT );
-            passtoast.show();
+            Log.d(TAG,"Rows updated:" + rows + " Movie ID"+ movieIdTwo);
+            if (rows >= 1){
+                Toast passtoast = Toast.makeText(this,"Database updated" ,Toast.LENGTH_SHORT );
+                passtoast.show();
+            }
+            else{
+                Toast passtoast = Toast.makeText(this,"Soething wrong with updation" ,Toast.LENGTH_SHORT );
+                passtoast.show();
+            }
+
         }catch (SQLiteException e){
 
             Toast toast = Toast.makeText(this,"Database Unavailable in OnFavoriteClicked Method" ,Toast.LENGTH_SHORT );
