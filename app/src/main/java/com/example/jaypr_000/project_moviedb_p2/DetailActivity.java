@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView noReviews;
 
-    String api_key = "8b6bf3486420893634f897e59f3f5edb";
+    String api_key = "ENTER_YOUR_KEY";
 
 
     @Override
