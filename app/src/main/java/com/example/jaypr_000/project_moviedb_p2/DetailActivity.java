@@ -54,9 +54,12 @@ public class DetailActivity extends AppCompatActivity {
     private TextView contentOne;
     private TextView authornameTwo;
     private TextView contentTwo;
+    private TextView authornameThree;
+    private TextView contentThree;
+
     private TextView noReviews;
 
-    String api_key = "ENTER_YOUR_KEY_HERE";
+    String api_key = "8b6bf3486420893634f897e59f3f5edb";
 
 
     @Override
@@ -304,10 +307,10 @@ public class DetailActivity extends AppCompatActivity {
                 contentTwo = (TextView) findViewById(R.id.content_two_review);
                 contentTwo.setText(reviewReturnValue.get(3));
 
-                authornameOne = (TextView) findViewById(R.id.author_one_name);
-                authornameOne.setText(reviewReturnValue.get(4));
-                contentOne = (TextView) findViewById(R.id.content_one_review);
-                contentOne.setText(reviewReturnValue.get(5));
+                authornameThree = (TextView) findViewById(R.id.author_three_name);
+                authornameThree.setText(reviewReturnValue.get(4));
+                contentThree = (TextView) findViewById(R.id.content_three_review);
+                contentThree.setText(reviewReturnValue.get(5));
             }
 
 
