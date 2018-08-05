@@ -172,6 +172,9 @@
                     android:fontFamily="sans-serif"
                     android:textSize="18sp"
                     android:id="@+id/headline_for_checkBox"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"
                     android:text="Add to Favorites:"
                     android:layout_below="@id/trailer_one_text"/>
 
@@ -182,6 +185,78 @@
                     android:id="@+id/favoriteCheckBox"
                     android:text="@string/favorite"
                     android:onClick="onFavoriteClicked"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:id="@+id/headline_for_Reviews"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"
+                    android:text="@string/reviews"
+                    android:layout_below="@id/favoriteCheckBox"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content_one_review"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@+id/headline_for_Reviews"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:id="@+id/author_one_name"
+                    android:layout_marginStart="210dp"
+                    android:layout_below="@+id/content_one_review"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content_two_review"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@+id/author_one_name"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:id="@+id/author_two_name"
+                    android:layout_marginStart="210dp"
+                    android:layout_below="@+id/content_two_review"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/content_three_review"
+                    android:paddingLeft="2dp"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@+id/author_two_name"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:id="@+id/author_three_name"
+                    android:layout_marginStart="210dp"
+                    android:layout_below="@+id/content_three_review"/>
+
+
+
+
+
+
+
+
 
 
             </RelativeLayout>

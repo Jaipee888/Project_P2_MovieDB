@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerViewMovieAdapter adapter;
     private ProgressBar progressBar;
-    private String api_key ="ENTER_API_KEY";
+    private String api_key ="ENTER_YOUR_KEY_HERE";
 
     Spinner spinner;
     private String originalLink = "http://api.themoviedb.org/3/movie/popular?api_key="+api_key;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                     for (int i =0; i < getAllMovieId().size(); i++){
                         String favstr = getAllMovieId().get(i);
-                        String favLink = "https://api.themoviedb.org/3/movie/"+favstr+"?+api_key="+api_key+"&language=en-US";
+                        String favLink = "https://api.themoviedb.org/3/movie/"+favstr+"?api_key="+api_key+"&language=en-US";
                         FavList.add(favLink);
                     }
                     new DownloadTask().execute(FavList);
@@ -189,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(MovieData item) {
 
+
+
                         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                         String detailUrl = item.getMovieId();
                         intent.putExtra("backdrop_path",item.getPosterThumbnail());
@@ -210,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void parseResult(String result, List<MovieData> MovieList ) {
+    private void parseResult(String result, List<MovieData> MovieList) {
 
         try {
 
@@ -234,24 +236,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-            }  else{
+            }
+            else{
 
                 JSONObject newpost = new JSONObject(result);
                 //newpost.getJSONObject("backdrop_path");
                 MovieData newitem = new MovieData();
-                // item.setImagePoster("http://image.tmdb.org/t/p/w500/" + post.getString("poster_path"));
-                //item.setOriginalTitle(post.getString("title"));
-                //item.setMovieId("https://api.themoviedb.org/3/movie/" + post.getString("id") + "?api_key="+api_key);
-                //item.setMovieId(post.getString("id"));
+
                 System.out.println("Final String::" + "http://image.tmdb.org/t/p/w500" + newpost.getString("poster_path"));
                 newitem.setImagePoster("http://image.tmdb.org/t/p/w500" + newpost.getString("poster_path"));
-                //item.setUserRating(post.getString("vote_average"));
-                //item.setReleaseDate(post.getString("release_date"));
-                //item.setOverView(post.getString("overview"));
+                newitem.setOverView("overview");
+                newitem.setReleaseDate("release_date");
+                newitem.setUserRating("vote_average");
+                newitem.setMovieId("id");
+                newitem.setPosterThumbnail("http://image.tmdb.org/t/p/w500/" + newpost.getString("backdrop_path"));
+                newitem.setOriginalTitle("title");
 
-
-                //String trailerArray = "https://api.themoviedb.org/3/movie/" +post.getString("id")+
-                //"/videos?language=en-US&api_key="+api_key;
                 MovieList.add(newitem);
 
             }
@@ -276,9 +276,7 @@ public class MainActivity extends AppCompatActivity {
 
             while(favoriteCursor.moveToNext()){
 
-                System.out.println("I'm in a While Loop");
                 moviedIdLink.add(favoriteCursor.getString(1));
-                System.out.println("I'm in a While Loop");
 
             }
 

@@ -17,6 +17,7 @@
     <string name="image_botton2">Image Button 2</string>
     <string name="image_botton3">Image Button 3</string>
     <string name="favorite">Favorite</string>
+    <string name="reviews">Reviews:</string>
     <string-array name="default_sort">
         <item>Sort by</item>
         <item>Popularity</item>
