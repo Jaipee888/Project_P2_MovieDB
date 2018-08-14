@@ -62,7 +62,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView noReviews;
     ToggleButton togglebutton;
 
-    String api_key = "ENTER_API_KEY";
+    String api_key = "8b6bf3486420893634f897e59f3f5edb";
 
 
 

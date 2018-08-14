@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerViewMovieAdapter adapter;
     private ProgressBar progressBar;
-    private String api_key ="ENTER_API_KEY";
+    private String api_key ="8b6bf3486420893634f897e59f3f5edb";
 
     Spinner spinner;
     private String originalLink = "http://api.themoviedb.org/3/movie/popular?api_key="+api_key;
@@ -223,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < posts.length(); i++) {
                     JSONObject post = posts.optJSONObject(i);
                     MovieData item = new MovieData();
+
                     item.setImagePoster("http://image.tmdb.org/t/p/w500/" + post.getString("poster_path"));
                     item.setOriginalTitle(post.getString("title"));
-                    //item.setMovieId("https://api.themoviedb.org/3/movie/" + post.getString("id") + "?api_key="+api_key);
                     item.setMovieId(post.getString("id"));
                     item.setPosterThumbnail("http://image.tmdb.org/t/p/w500/" + post.getString("backdrop_path"));
                     item.setUserRating(post.getString("vote_average"));
@@ -240,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
             else{
 
                 JSONObject newpost = new JSONObject(result);
-                //newpost.getJSONObject("backdrop_path");
                 MovieData newitem = new MovieData();
 
                 System.out.println("Final String::" + "http://image.tmdb.org/t/p/w500" + newpost.getString("poster_path"));
