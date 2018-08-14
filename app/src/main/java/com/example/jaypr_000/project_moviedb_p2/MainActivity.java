@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerViewMovieAdapter adapter;
     private ProgressBar progressBar;
-    private String api_key ="8b6bf3486420893634f897e59f3f5edb";
+    private String api_key ="ENTER_API_KEY";
 
     Spinner spinner;
     private String originalLink = "http://api.themoviedb.org/3/movie/popular?api_key="+api_key;
