@@ -453,13 +453,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public  class ReviewDownLoadTask extends AsyncTask <String, Void, ArrayList<String>> {
 
-
-
-
-
         @Override
         protected void onPreExecute() {
-
             super.onPreExecute();
         }
 

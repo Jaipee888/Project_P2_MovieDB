@@ -245,12 +245,12 @@ public class MainActivity extends AppCompatActivity {
 
                 System.out.println("Final String::" + "http://image.tmdb.org/t/p/w500" + newpost.getString("poster_path"));
                 newitem.setImagePoster("http://image.tmdb.org/t/p/w500" + newpost.getString("poster_path"));
-                newitem.setOverView("overview");
-                newitem.setReleaseDate("release_date");
-                newitem.setUserRating("vote_average");
-                newitem.setMovieId("id");
+                newitem.setOverView(newpost.getString("overview"));
+                newitem.setReleaseDate(newpost.getString("release_date"));
+                newitem.setUserRating(newpost.getString("vote_average"));
+                newitem.setMovieId(newpost.getString("id"));
                 newitem.setPosterThumbnail("http://image.tmdb.org/t/p/w500/" + newpost.getString("backdrop_path"));
-                newitem.setOriginalTitle("title");
+                newitem.setOriginalTitle(newpost.getString("title"));
 
                 MovieList.add(newitem);
 
