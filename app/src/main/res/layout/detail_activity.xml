@@ -166,6 +166,126 @@
 
                 <TextView
                     android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_Two_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/trailer_one_text"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_Two_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonTwo"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/trailer_one_text"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_Three_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/trailer_Two_text"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_Three_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonThree"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/trailer_Two_text"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_Four_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/trailer_Three_text"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_Four_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonFour"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/trailer_Three_text"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_Five_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/trailer_Four_text"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_Five_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonFive"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/trailer_Four_text"/>
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/trailer_Six_text"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/trailer_Five_text"
+                    android:gravity="fill"
+                    android:paddingLeft="2dp"
+                    android:textSize="14sp"
+                    android:text="@string/trailer_Six_Textview"
+                    android:layout_alignParentStart="true"
+                    android:paddingStart="2dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButtonSix"
+                    android:src="@drawable/baseline_play_arrow_black_18"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="70dp"
+                    android:contentDescription="@string/image_botton1"
+                    android:layout_below="@+id/trailer_Five_text"/>
+
+                <TextView
+                    android:layout_width="150dp"
                     android:layout_height="26dp"
                     android:textColor="#000000"
                     android:textStyle="bold"
@@ -176,15 +296,27 @@
                     android:paddingStart="2dp"
                     android:layout_marginLeft="3dp"
                     android:text="Add to Favorites:"
-                    android:layout_below="@id/trailer_one_text"/>
+                    android:layout_below="@id/trailer_Six_text"/>
 
-                <CheckBox
+                <!--<CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/headline_for_checkBox"
                     android:id="@+id/favoriteCheckBox"
                     android:text="@string/favorite"
-                    android:onClick="onFavoriteClicked"/>
+                    android:onClick="onFavoriteClicked"/>-->
+
+                <ToggleButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/headline_for_checkBox"
+                    android:id="@+id/ToggleButton"
+                    android:onClick="onFavoriteClicked"
+                    android:background="@drawable/toggle_image"
+                    android:textOn=""
+                    android:textOff=""/>
+
+
 
                 <TextView
                     android:layout_width="150dp"
@@ -198,7 +330,7 @@
                     android:paddingStart="2dp"
                     android:layout_marginLeft="3dp"
                     android:text="@string/reviews"
-                    android:layout_below="@id/favoriteCheckBox"/>
+                    android:layout_below="@id/ToggleButton"/>
 
 
 

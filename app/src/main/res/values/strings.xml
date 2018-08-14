@@ -11,8 +11,11 @@
     <string name="TitleText_Name">Title:</string>
     <string name="trailer_headline">Trailer:</string>
     <string name="trailer_one_Textview">Offical Trailer HD</string>
-    <string name="trailer_two_Textview">Trailer Two </string>
-    <string name="trailer_three_Textview">Trailer Three </string>
+    <string name="trailer_Two_Textview">Trailer 2 </string>
+    <string name="trailer_Three_Textview">Trailer 3 </string>
+    <string name="trailer_Four_Textview">Trailer 4 </string>
+    <string name="trailer_Five_Textview">Trailer 5 </string>
+    <string name="trailer_Six_Textview">Trailer 6 </string>
     <string name="image_botton1">Image Button 1</string>
     <string name="image_botton2">Image Button 2</string>
     <string name="image_botton3">Image Button 3</string>

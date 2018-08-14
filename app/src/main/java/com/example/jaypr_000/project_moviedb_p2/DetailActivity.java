@@ -1,6 +1,7 @@
 package com.example.jaypr_000.project_moviedb_p2;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -58,8 +60,11 @@ public class DetailActivity extends AppCompatActivity {
     private TextView contentThree;
 
     private TextView noReviews;
+    ToggleButton togglebutton;
 
-    String api_key = "ENTER_YOUR_KEY";
+    String api_key = "8b6bf3486420893634f897e59f3f5edb";
+
+
 
 
     @Override
@@ -87,14 +92,7 @@ public class DetailActivity extends AppCompatActivity {
 
         final String trailerLink = "https://api.themoviedb.org/3/movie/"+ movieId +"/videos?language=en-US&api_key=" + api_key;
 
-        //ArrayList reviewLink = new ArrayList<>();
         String newReviewLink = "https://api.themoviedb.org/3/movie/"+movieId+"/reviews?api_key="+api_key+"&language=en-US&page=1";
-        //reviewLink.add(newReviewLink);
-
-        //String s = Arrays.toString(reviewLink.toArray());
-
-        System.out.println("The Review Link is : " + newReviewLink);
-
 
         originalTitleTextView = (TextView) findViewById(R.id.detail_TitleTextView);
         overViewText = (TextView) findViewById(R.id.detail_textView);
@@ -116,17 +114,216 @@ public class DetailActivity extends AppCompatActivity {
 
 
         ImageButton imgButtonOne = (ImageButton) findViewById(R.id.imageButtonOne);
+        ImageButton imgButtonTwo = (ImageButton) findViewById(R.id.imageButtonTwo);
+        ImageButton imgButtonThree = (ImageButton) findViewById(R.id.imageButtonThree);
+        ImageButton imgButtonFour = (ImageButton) findViewById(R.id.imageButtonFour);
+        ImageButton imgButtonFive = (ImageButton) findViewById(R.id.imageButtonFive);
+        ImageButton imgButtonSix = (ImageButton) findViewById(R.id.imageButtonSix);
+
         imgButtonOne.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
             @Override
             public void onClick(View v) {
 
-                new DetailDownloadTask().execute(trailerLink);
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkOne = "https://www.youtube.com/watch?v=" + keyReturnValue.get(0);
+
+                        Uri webpage = Uri.parse(trailerLinkOne);
+                        Intent videoIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                        startActivity(videoIntent);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntent, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntent);
+                        }
+
+
+                }
+
+                }.execute(trailerLink);
+
+            }
+        });
+
+        imgButtonTwo.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            public void onClick(View v) {
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkTwo = "https://www.youtube.com/watch?v=" + keyReturnValue.get(1);
+                        Uri webpageTwo = Uri.parse(trailerLinkTwo);
+                        Intent videoIntentTwo = new Intent(Intent.ACTION_VIEW, webpageTwo);
+                        startActivity(videoIntentTwo);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntentTwo, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntentTwo);
+                        }
+
+
+                    }
+
+                }.execute(trailerLink);
 
 
 
             }
         });
 
+        imgButtonThree.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            public void onClick(View v) {
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkThree = "https://www.youtube.com/watch?v=" + keyReturnValue.get(2);
+                        Uri webpageThree = Uri.parse(trailerLinkThree);
+                        Intent videoIntentThree = new Intent(Intent.ACTION_VIEW, webpageThree);
+                        startActivity(videoIntentThree);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntentThree, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntentThree);
+                        }
+
+
+                    }
+
+                }.execute(trailerLink);
+
+
+
+            }
+        });
+
+        imgButtonFour.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            public void onClick(View v) {
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkFour = "https://www.youtube.com/watch?v=" + keyReturnValue.get(3);
+                        Uri webpageFour = Uri.parse(trailerLinkFour);
+                        Intent videoIntentFour = new Intent(Intent.ACTION_VIEW, webpageFour);
+                        startActivity(videoIntentFour);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntentFour, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntentFour);
+                        }
+
+
+                    }
+
+                }.execute(trailerLink);
+
+
+
+            }
+        });
+
+        imgButtonFive.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            public void onClick(View v) {
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkFive = "https://www.youtube.com/watch?v=" + keyReturnValue.get(4);
+                        Uri webpageFive = Uri.parse(trailerLinkFive);
+                        Intent videoIntentFive = new Intent(Intent.ACTION_VIEW, webpageFive);
+                        startActivity(videoIntentFive);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntentFive, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntentFive);
+                        }
+
+
+                    }
+
+                }.execute(trailerLink);
+
+
+
+            }
+        });
+
+
+        imgButtonSix.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            public void onClick(View v) {
+
+                new DetailDownloadTask(){
+                    @Override
+                    protected void onPostExecute(ArrayList<String> keyReturnValue) {
+
+
+                        String trailerLinkSix = "https://www.youtube.com/watch?v=" + keyReturnValue.get(5);
+                        Uri webpageFive = Uri.parse(trailerLinkSix);
+                        Intent videoIntentSix = new Intent(Intent.ACTION_VIEW, webpageFive);
+                        startActivity(videoIntentSix);
+
+                        //Verify it resolves
+                        PackageManager packageManager = getPackageManager();
+                        List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntentSix, packageManager.MATCH_DEFAULT_ONLY);
+                        boolean isIntentSafe = activities.size()>0;
+
+                        if(isIntentSafe){
+                            startActivity(videoIntentSix);
+                        }
+
+
+                    }
+
+                }.execute(trailerLink);
+
+
+
+            }
+        });
 
 
         // Create a Cursor.
@@ -142,7 +339,9 @@ public class DetailActivity extends AppCompatActivity {
 
             // Move to first record in the cursor.
             if(cursor.moveToFirst()){
-                final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+                //final CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+                final ToggleButton favorite = (ToggleButton) findViewById(R.id.ToggleButton);
+                //togglebutton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.heart_red));
                 favorite.setChecked(true);
 
             }
@@ -156,42 +355,33 @@ public class DetailActivity extends AppCompatActivity {
 
         }
 
+
+
     }
 
-    public class DetailDownloadTask extends AsyncTask <String, Void, String>{
+
+
+
+
+
+    public class DetailDownloadTask extends AsyncTask <String, Void, ArrayList<String>>{
+
+
+
+
         @Override
         protected void onPreExecute() {
             //progressBar.setVisibility(View.VISIBLE);
         }
 
-        @Override
-        protected void onPostExecute(String keyReturnValue) {
-
-            String trailerLinkOne = "https://www.youtube.com/watch?v=" + keyReturnValue;
-            Uri webpage = Uri.parse(trailerLinkOne);
-            Intent videoIntent = new Intent(Intent.ACTION_VIEW, webpage);
-            startActivity(videoIntent);
-            //Toast.makeText(getApplicationContext(),"Your video will start here" , Toast.LENGTH_LONG).show();
-
-            //Verify it resolves
-            PackageManager packageManager = getPackageManager();
-            List<ResolveInfo> activities = packageManager.queryIntentActivities(videoIntent, packageManager.MATCH_DEFAULT_ONLY);
-            boolean isIntentSafe = activities.size()>0;
-
-            if(isIntentSafe){
-                startActivity(videoIntent);
-            }
-
-        }
-
 
         @Override
-        protected String doInBackground(String... params) {
+        protected ArrayList<String> doInBackground(String... params) {
 
 
 
             HttpURLConnection urlConnection;
-            String keyReturnValue=null;
+            ArrayList<String> keyReturnValue = new ArrayList<String>();
 
             try{
 
@@ -225,14 +415,18 @@ public class DetailActivity extends AppCompatActivity {
             }
             return keyReturnValue;
         }
+
+
+
     }
 
-    private  String parseVideoResult(String videoTrailerLink){
+    private  ArrayList<String> parseVideoResult(String videoTrailerLink){
 
         String idValue;
         String keyValue;
-        String[] idStrArray = new String[3];
-        String[] keyStrArray = new String[3];
+        //String[] idStrArray = new String[3];
+        //String[] keyStrArray = new String[3];
+        ArrayList<String> keyStrArray = new ArrayList<String>();
 
 
         try{
@@ -245,14 +439,15 @@ public class DetailActivity extends AppCompatActivity {
                 JSONObject childJSONObject = jsonArray.getJSONObject(i);
                 idValue = childJSONObject.getString("id");
                 keyValue = childJSONObject.getString("key");
-                idStrArray = new String[]{idValue, idValue, idValue};
-                keyStrArray = new String[] {keyValue, keyValue, keyValue};
+                //idStrArray = new String[]{idValue, idValue, idValue};
+                //keyStrArray = new String[] {keyValue, keyValue, keyValue};
+                keyStrArray.add(keyValue);
             }
         }catch (JSONException e){
             e.printStackTrace();
         }
 
-        return keyStrArray[0];
+        return keyStrArray;
 
     }
 
@@ -404,7 +599,9 @@ public class DetailActivity extends AppCompatActivity {
         long rows;
 
         // Get the Value of the Checkbox.
-        CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+        //CheckBox favorite = (CheckBox) findViewById(R.id.favoriteCheckBox);
+        togglebutton = (ToggleButton) findViewById(R.id.ToggleButton);
+        togglebutton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.heart_off));
         //Ankur Code Start
 
 
@@ -413,7 +610,9 @@ public class DetailActivity extends AppCompatActivity {
         // Adding the value of favorite checkbox to movieCheckboxValue ContentValues object.
         movieCheckboxValue.put("MOVIEID",movieIdTwo );
         movieCheckboxValue.put("TITLE","Title" );
-        movieCheckboxValue.put("FAVORITE",favorite.isChecked());
+        //movieCheckboxValue.put("FAVORITE",favorite.isChecked());
+
+        movieCheckboxValue.put("FAVORITE",togglebutton.isChecked());
 
         //Get a Reference to the database and update the FAVORITE column.
         SQLiteOpenHelper movieDBDatabaseHelper = new MovieDBDatabaseHelper(this );
@@ -421,12 +620,15 @@ public class DetailActivity extends AppCompatActivity {
 
         try{
             SQLiteDatabase db = movieDBDatabaseHelper.getWritableDatabase();
-            if(favorite.isChecked()){
+            if(togglebutton.isChecked()){
+                togglebutton.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.heart_red));
                 rows =  db.insert("MOVIEDB",null,movieCheckboxValue);
+
 
             }else{
 
                 //long rows = db.delete("MOVIEDB",null,movieCheckboxValue);
+                togglebutton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.heart_off));
                 rows =  db.delete("MOVIEDB", "MOVIEID" + "=" + movieIdTwo, null);
 
             }
@@ -435,7 +637,7 @@ public class DetailActivity extends AppCompatActivity {
             System.out.println(movieIdTwo);
             Log.d(TAG,"Rows updated:" + rows + " Movie ID"+ movieIdTwo);
             if (rows >= 1){
-                Toast passtoast = Toast.makeText(this,"Database updated" ,Toast.LENGTH_SHORT );
+                Toast passtoast = Toast.makeText(this,"Database Updated" ,Toast.LENGTH_SHORT );
                 passtoast.show();
             }
             else{
@@ -452,6 +654,9 @@ public class DetailActivity extends AppCompatActivity {
 
 
     }
+
+
+
 
 
     // AsyncTask and JSON parsing for Reviews.
